@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Технические работы - iHamkor</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+          sans-serif;
+        background-color: #ffffff;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+      }
+
+      .header {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        padding: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        width: 40px;
+        height: 40px;
+      }
+
+      .logo img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+
+      .language-selector {
+        position: relative;
+        cursor: pointer;
+      }
+
+      .language {
+        color: #0d1d58;
+        font-weight: 400;
+        font-size: 16px;
+        padding: 8px 12px;
+        border-radius: 4px;
+        transition: background-color 0.2s;
+      }
+
+      .language:hover {
+        background-color: #f3f4f6;
+      }
+
+      .language-dropdown {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background: white;
+        border: 1px solid #e5e7eb;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        min-width: 120px;
+        z-index: 1000;
+        display: none;
+      }
+
+      .language-dropdown.show {
+        display: block;
+      }
+
+      .language-option {
+        padding: 12px 16px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+        font-size: 14px;
+        color: #0d1d58;
+      }
+
+      .language-option:hover {
+        background-color: #f3f4f6;
+      }
+
+      .language-option:first-child {
+        border-radius: 8px 8px 0 0;
+      }
+
+      .language-option:last-child {
+        border-radius: 0 0 8px 8px;
+      }
+
+      .main-content {
+        text-align: center;
+        padding: 20px;
+      }
+
+      .gears {
+        margin-bottom: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .gears img {
+        max-width: 240px;
+        height: auto;
+      }
+
+      .title {
+        color: #0d1d58;
+        font-size: 24px;
+        font-weight: 500;
+        margin-bottom: 10px;
+        line-height: 1.3;
+      }
+
+      .subtitle {
+        color: #0d1d58;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 1.4;
+        opacity: 0.5;
+      }
+
+      @media (max-width: 480px) {
+        .title {
+          font-size: 20px;
+        }
+
+        .subtitle {
+          font-size: 14px;
+        }
+
+        .gears img {
+          max-width: 100px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <div class="logo">
+        <svg
+          width="41"
+          height="40"
+          viewBox="0 0 41 40"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path d="M2 0H11.0909V9.09091H2V0Z" fill="#0D1D58" />
+          <path
+            d="M2 15.2727H29.2727V0H38.3636V40H29.2727V24.3636H11.0909V40H2V15.2727Z"
+            fill="#0D1D58"
+          />
+        </svg>
+      </div>
+      <div class="language-selector">
+        <div class="language" id="currentLanguage">RU</div>
+        <div class="language-dropdown" id="languageDropdown">
+          <div class="language-option" data-lang="ru">Русский</div>
+          <div class="language-option" data-lang="uz-cyrl">Ўзбекча</div>
+          <div class="language-option" data-lang="uz-latn">O'zbekcha</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="main-content">
+      <div class="gears">
+        <svg
+          width="240"
+          height="228"
+          viewBox="0 0 240 228"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g filter="url(#filter0_d_14363_3497)">
+            <path
+              d="M140.179 183.616C145.128 175.043 145.142 175.024 150.091 166.451L140.261 154.907C141.072 148.73 141.485 145.605 142.301 139.427L154.785 130.821C152.222 121.259 152.217 121.235 149.654 111.678L134.539 110.469C130.747 105.525 128.827 103.024 125.035 98.08L127.781 83.1664C119.208 78.2176 119.189 78.2032 110.616 73.2544L99.0718 83.0848C92.8942 82.2736 89.7694 81.8608 83.5918 81.0448L74.9854 68.56C65.4238 71.1232 65.3998 71.128 55.843 73.6912L54.6334 88.8064C49.6894 92.5984 47.1886 94.5184 42.2446 98.3104L27.331 95.5648C22.3822 104.138 22.3678 104.157 17.419 112.73L27.2494 124.274C26.4382 130.451 26.0254 133.576 25.2094 139.754L12.7246 148.36C15.2878 157.922 15.2926 157.946 17.8558 167.502L32.971 168.712C36.763 173.656 38.683 176.157 42.475 181.101L39.7294 196.014C48.3022 200.963 48.3214 200.978 56.8942 205.926L68.4382 196.096C74.6158 196.907 77.7406 197.32 83.9182 198.136L92.5246 210.621C102.086 208.058 102.11 208.053 111.667 205.49L112.877 190.374C117.821 186.582 120.321 184.662 125.265 180.87L140.179 183.616ZM71.3422 161.08C59.4766 154.23 55.411 139.053 62.2606 127.187C69.1102 115.322 84.2878 111.256 96.1534 118.106C108.019 124.955 112.085 140.133 105.235 151.998C98.3854 163.869 83.2126 167.934 71.3422 161.08ZM228.451 79.8544C229.363 72.9424 229.363 72.9232 230.275 66.0112L220.766 61.1488C219.629 56.9104 219.057 54.7648 217.92 50.5264L223.728 41.56C219.485 36.0304 219.475 36.016 215.227 30.4816L205.065 33.7696C201.264 31.576 199.344 30.4672 195.542 28.2688L193.305 17.824C186.393 16.912 186.374 16.912 179.462 16L174.6 25.5088C170.361 26.6464 168.216 27.2176 163.977 28.3552L155.011 22.5472C149.481 26.7904 149.467 26.8 143.933 31.048L147.221 41.2096C145.027 45.0112 143.918 46.9312 141.72 50.7328L131.275 52.9696C130.363 59.8816 130.363 59.9008 129.451 66.8128L138.96 71.6752C140.097 75.9136 140.669 78.0592 141.806 82.2976L135.998 91.264C140.241 96.7936 140.251 96.808 144.499 102.342L154.661 99.0544C158.462 101.248 160.382 102.357 164.184 104.555L166.421 115C173.333 115.912 173.352 115.912 180.264 116.824L185.126 107.315C189.365 106.178 191.51 105.606 195.749 104.469L204.715 110.277C210.245 106.034 210.259 106.024 215.793 101.776L212.505 91.6144C214.699 87.8128 215.808 85.8928 218.006 82.0912L228.451 79.8544ZM177.581 83.7424C168.009 82.4848 161.275 73.7008 162.533 64.1344C163.79 54.5632 172.574 47.8288 182.141 49.0864C191.712 50.344 198.446 59.128 197.189 68.6944C195.931 78.2608 187.147 85.0048 177.581 83.7424Z"
+              fill="#CBD6F6"
+              fill-opacity="0.5"
+              shape-rendering="crispEdges"
+            />
+            <path
+              d="M82.7686 81.6123L83.0205 81.9775L83.4609 82.0361C89.6385 82.8521 92.7636 83.2649 98.9414 84.0762L99.3818 84.1338L99.7197 83.8457L110.727 74.4727C114.611 76.7152 116.655 77.8958 118.698 79.0762C120.742 80.2565 122.785 81.4366 126.669 83.6787L124.052 97.8994L123.971 98.3359L124.241 98.6885C128.062 103.67 129.925 106.096 133.745 111.077L134.016 111.43L134.459 111.466L148.87 112.618C151.193 121.279 151.313 121.733 153.636 130.397L141.733 138.604L141.367 138.855L141.31 139.296C140.494 145.474 140.081 148.599 139.27 154.777L139.211 155.218L139.499 155.556L148.871 166.562C146.629 170.446 145.45 172.49 144.27 174.533C143.089 176.577 141.908 178.62 139.665 182.505L125.446 179.887L125.01 179.807L124.657 180.077C122.185 181.973 120.323 183.401 118.462 184.829C116.601 186.257 114.739 187.685 112.268 189.581L111.915 189.852L111.88 190.295L110.726 204.706C102.065 207.029 101.612 207.149 92.9463 209.472L84.7412 197.568L84.4893 197.203L84.0488 197.145C77.8714 196.329 74.7462 195.916 68.5684 195.104L68.1279 195.047L67.79 195.335L56.7832 204.707C52.8989 202.465 50.8549 201.285 48.8115 200.104C46.7681 198.924 44.7245 197.744 40.8398 195.501L43.458 181.282L43.5391 180.845L43.2686 180.492L33.7646 168.104L33.4941 167.751L33.0508 167.715L18.6387 166.562C16.316 157.901 16.196 157.448 13.873 148.782L25.7773 140.577L26.1426 140.325L26.2012 139.885C27.0172 133.707 27.43 130.581 28.2412 124.403L28.2988 123.964L28.0107 123.625L18.6377 112.618C20.88 108.734 22.0609 106.691 23.2412 104.647C24.4217 102.604 25.6011 100.56 27.8438 96.6748L42.0635 99.2939L42.501 99.374L42.8535 99.1035L55.2422 89.5996L55.5947 89.3291L55.6299 88.8857L56.7832 74.4746C65.444 72.1518 65.8973 72.0318 74.5625 69.709L82.7686 81.6123ZM96.6533 117.239C84.3096 110.114 68.5203 114.343 61.3945 126.688C54.2691 139.031 58.498 154.82 70.8418 161.946C83.1904 169.077 98.9758 164.847 106.102 152.498L106.101 152.497C113.226 140.153 108.997 124.365 96.6533 117.239ZM186.253 17.9033C187.865 18.1154 189.477 18.3272 192.475 18.7227L194.564 28.4785L194.657 28.9121L195.042 29.1348C198.844 31.3332 200.764 32.4421 204.565 34.6357L204.95 34.8574L205.373 34.7207L214.862 31.6494C218.549 36.4523 218.823 36.8105 222.505 41.6084L217.08 49.9824L216.839 50.3564L216.954 50.7852C217.523 52.9038 217.95 54.4999 218.377 56.0957C218.804 57.6917 219.232 59.2886 219.801 61.4082L219.915 61.8369L220.311 62.0391L229.19 66.5801C228.795 69.5786 228.583 71.1909 228.371 72.8027C228.159 74.4144 227.947 76.0261 227.552 79.0244L217.797 81.1133L217.362 81.2061L217.141 81.5908C214.942 85.3925 213.833 87.3128 211.64 91.1143L211.417 91.499L211.554 91.9219L214.624 101.412C209.822 105.098 209.464 105.372 204.666 109.054L196.292 103.63L195.919 103.388L195.489 103.503C193.37 104.072 191.775 104.499 190.179 104.926C188.583 105.353 186.987 105.781 184.867 106.35L184.438 106.465L184.236 106.86L179.694 115.74C176.696 115.345 175.084 115.133 173.473 114.921C171.861 114.709 170.249 114.496 167.25 114.101L165.161 104.346L165.068 103.912L164.685 103.689L155.16 98.1885L154.775 97.9658L154.353 98.1025L144.862 101.173C141.177 96.3714 140.902 96.0127 137.221 91.2148L142.646 82.8408L142.888 82.4678L142.772 82.0381C142.204 79.9193 141.776 78.3235 141.349 76.7275C140.921 75.1317 140.495 73.5354 139.926 71.416L139.811 70.9873L139.415 70.7852L130.534 66.2432C130.93 63.245 131.142 61.6332 131.354 60.0215C131.567 58.4096 131.778 56.7978 132.174 53.7988L141.93 51.7109L142.363 51.6172L142.586 51.2334C144.784 47.4316 145.893 45.5107 148.087 41.709L148.309 41.3242L148.172 40.9014L145.101 31.4111C149.903 27.7252 150.262 27.4512 155.06 23.7695L163.434 29.1943L163.807 29.4365L164.236 29.3213C166.355 28.7526 167.951 28.3256 169.547 27.8984C171.143 27.4712 172.74 27.0435 174.859 26.4746L175.288 26.3594L175.49 25.9639L180.03 17.083C183.029 17.4786 184.641 17.6912 186.253 17.9033ZM182.271 48.0947C172.157 46.7655 162.871 53.8848 161.541 64.0039C160.232 73.9594 167.111 83.1143 176.979 84.666L177.45 84.7334C187.564 86.0679 196.85 78.9386 198.18 68.8252C199.509 58.7118 192.39 49.4244 182.271 48.0947Z"
+              stroke="#CBD6F6"
+              stroke-opacity="0.8"
+              stroke-width="2"
+              shape-rendering="crispEdges"
+            />
+          </g>
+          <defs>
+            <filter
+              id="filter0_d_14363_3497"
+              x="-11.2754"
+              y="0"
+              width="265.551"
+              height="242.621"
+              filterUnits="userSpaceOnUse"
+              color-interpolation-filters="sRGB"
+            >
+              <feFlood flood-opacity="0" result="BackgroundImageFix" />
+              <feColorMatrix
+                in="SourceAlpha"
+                type="matrix"
+                values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                result="hardAlpha"
+              />
+              <feOffset dy="8" />
+              <feGaussianBlur stdDeviation="12" />
+              <feComposite in2="hardAlpha" operator="out" />
+              <feColorMatrix
+                type="matrix"
+                values="0 0 0 0 0.796078 0 0 0 0 0.839216 0 0 0 0 0.964706 0 0 0 0.4 0"
+              />
+              <feBlend
+                mode="normal"
+                in2="BackgroundImageFix"
+                result="effect1_dropShadow_14363_3497"
+              />
+              <feBlend
+                mode="normal"
+                in="SourceGraphic"
+                in2="effect1_dropShadow_14363_3497"
+                result="shape"
+              />
+            </filter>
+          </defs>
+        </svg>
+      </div>
+
+      <h1 class="title" id="mainTitle">Ведутся технические работы</h1>
+      <p class="subtitle" id="mainSubtitle">Сервис будет доступен позже</p>
+    </div>
+
+    <script>
+      const translations = {
+        ru: {
+          title: 'Ведутся технические работы',
+          subtitle: 'Сервис будет доступен позже',
+          langCode: 'RU',
+        },
+        'uz-cyrl': {
+          title: 'Техник ишлар олиб борилмоқда',
+          subtitle: 'Хизмат кейинроқ мавжуд бўлади',
+          langCode: 'ЎЗ',
+        },
+        'uz-latn': {
+          title: 'Texnik ishlar olib borilmoqda',
+          subtitle: "Xizmat keyinroq mavjud bo'ladi",
+          langCode: "O'Z",
+        },
+      };
+
+      let currentLang = 'ru';
+
+      const currentLanguageEl = document.getElementById('currentLanguage');
+      const languageDropdown = document.getElementById('languageDropdown');
+      const mainTitle = document.getElementById('mainTitle');
+      const mainSubtitle = document.getElementById('mainSubtitle');
+
+      function switchLanguage(lang) {
+        currentLang = lang;
+        const translation = translations[lang];
+
+        mainTitle.textContent = translation.title;
+        mainSubtitle.textContent = translation.subtitle;
+        currentLanguageEl.textContent = translation.langCode;
+
+        document.documentElement.lang = lang;
+
+        localStorage.setItem('selectedLanguage', lang);
+
+        languageDropdown.classList.remove('show');
+      }
+
+      function toggleDropdown() {
+        languageDropdown.classList.toggle('show');
+      }
+
+      currentLanguageEl.addEventListener('click', toggleDropdown);
+
+      document.querySelectorAll('.language-option').forEach((option) => {
+        option.addEventListener('click', function () {
+          const lang = this.getAttribute('data-lang');
+          switchLanguage(lang);
+        });
+      });
+
+      document.addEventListener('click', function (event) {
+        if (!event.target.closest('.language-selector')) {
+          languageDropdown.classList.remove('show');
+        }
+      });
+
+      document.addEventListener('DOMContentLoaded', function () {
+        const savedLang = localStorage.getItem('selectedLanguage');
+        if (savedLang && translations[savedLang]) {
+          switchLanguage(savedLang);
+        }
+      });
+    </script>
+  </body>
+</html>
